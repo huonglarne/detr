@@ -1,0 +1,7 @@
+torch
+torchvision
+transformers
+pycocotools
+pytorch-lightning
+scipy
+timm

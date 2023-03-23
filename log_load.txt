@@ -1,0 +1,63 @@
+(/nas/huong/env/detr) ubuntu@moreh-2004-vm07:/nas/huong/projects/detr$ python finetune_object_detection.py
+/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/common/utils.py:1868: UserWarning: torch.triangular_solve is deprecated in favor of torch.linalg.solve_triangularand will b
+e removed in a future PyTorch release.
+torch.linalg.solve_triangular has its arguments reversed and does not return a copy of one of the inputs.
+X = torch.triangular_solve(B, A).solution
+should be replaced with
+X = torch.linalg.solve_triangular(A, B). (Triggered internally at ../aten/src/ATen/native/BatchLinearAlgebra.cpp:2115.)
+  'triangular_solve': type(dummy_tensor.triangular_solve(dummy_tensor)),
+2023-03-23 18:27:47,731 - torch.distributed.nn.jit.instantiator - INFO - Created a temporary directory at /tmp/tmp9ufp_7vl
+2023-03-23 18:27:47,731 - torch.distributed.nn.jit.instantiator - INFO - Writing /tmp/tmp9ufp_7vl/_remote_module_non_scriptable.py
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+2023-03-23 18:28:02,614 - timm.models.helpers - INFO - Loading pretrained weights from url (https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-rsb-weights/resnet50_a1_0-14fe96d
+1.pth)
+Downloading: "https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-rsb-weights/resnet50_a1_0-14fe96d1.pth" to /home/ubuntu/.cache/torch/hub/checkpoints/resnet50_a1_0-14fe96d1.pth
+[2023-03-23 18:28:08.670] [info] Requesting resources for KT AI Accelerator from the server...
+[2023-03-23 18:28:09.686] [info] Initializing the worker daemon for KT AI Accelerator
+[2023-03-23 18:28:10.747] [info] [1/1] Connecting to resources on the server (192.168.110.57:24161)...
+[2023-03-23 18:28:10.758] [info] Establishing links to the resources...
+[2023-03-23 18:28:10.847] [info] KT AI Accelerator is ready to use.
+Traceback (most recent call last):
+  File "finetune_object_detection.py", line 26, in <module>
+    model = Detr(lr=1e-4, lr_backbone=1e-5, weight_decay=1e-4, num_labels=num_labels)
+  File "/nas/huong/projects/detr/model.py", line 10, in __init__
+    self.model = DetrForObjectDetection.from_pretrained(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/modeling_utils.py", line 2498, in from_pretrained
+    model = cls(config, *model_args, **model_kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 1374, in __init__
+    self.model = DetrModel(config)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 1206, in __init__
+    backbone = DetrConvEncoder(config)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 342, in __init__
+    backbone = create_model(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/timm/models/factory.py", line 71, in create_model
+    model = create_fn(pretrained=pretrained, pretrained_cfg=pretrained_cfg, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/timm/models/resnet.py", line 821, in resnet50
+    return _create_resnet('resnet50', pretrained, **model_args)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/timm/models/resnet.py", line 736, in _create_resnet
+    return build_model_with_cfg(ResNet, variant, pretrained, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/timm/models/helpers.py", line 551, in build_model_with_cfg
+    load_pretrained(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/timm/models/helpers.py", line 248, in load_pretrained
+    state_dict = load_state_dict_from_url(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/hub.py", line 735, in load_state_dict_from_url
+    return torch.load(cached_file, map_location=map_location)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/serialization.py", line 795, in load
+    return _legacy_load(opened_file, map_location, pickle_module, **pickle_load_args)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 131, in wrapper
+    raise instance
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 72, in wrapper
+    return moreh_function(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/serialization.py", line 260, in _legacy_load
+    deserialized_objects[key]._set_from_file(f, offset,
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/storage.py", line 794, in _set_from_file
+    return self._storage._set_from_file(*args, **kwargs)
+SystemError: /croot/python-split_1677726866902/work/Objects/longobject.c:1348: bad argument to internal function
+

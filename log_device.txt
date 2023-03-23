@@ -1,0 +1,126 @@
+
+/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/common/utils.py:1868: UserWarning: torch.triangular_solve is deprecated in favor of torch.linalg.solve_tri
+angularand will be removed in a future PyTorch release.
+torch.linalg.solve_triangular has its arguments reversed and does not return a copy of one of the inputs.
+X = torch.triangular_solve(B, A).solution
+should be replaced with
+X = torch.linalg.solve_triangular(A, B). (Triggered internally at ../aten/src/ATen/native/BatchLinearAlgebra.cpp:2115.)
+  'triangular_solve': type(dummy_tensor.triangular_solve(dummy_tensor)),
+2023-03-23 16:42:45,063 - torch.distributed.nn.jit.instantiator - INFO - Created a temporary directory at /tmp/tmpdayzsth6
+2023-03-23 16:42:45,064 - torch.distributed.nn.jit.instantiator - INFO - Writing /tmp/tmpdayzsth6/_remote_module_non_scriptable.py
+Converting ./balloon/train/via_region_data.json from VIA format to COCO format
+Saving to ./balloon/train/custom_train.json
+Converting ./balloon/val/via_region_data.json from VIA format to COCO format
+Saving to ./balloon/val/custom_val.json
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+Number of training examples: 61
+Number of validation examples: 13
+Image n°36
+[2023-03-23 16:43:00.518] [info] Requesting resources for KT AI Accelerator from the server...
+[2023-03-23 16:43:01.535] [info] Initializing the worker daemon for KT AI Accelerator
+[2023-03-23 16:43:02.660] [info] [1/1] Connecting to resources on the server (192.168.110.12:24165)...
+[2023-03-23 16:43:02.674] [info] Establishing links to the resources...
+[2023-03-23 16:43:02.737] [info] KT AI Accelerator is ready to use.
+{'size': tensor([ 800, 1066]), 'image_id': tensor([0]), 'class_labels': tensor([0]), 'boxes': tensor([[0.5955, 0.5811, 0.2202, 0.3561]]), 'area': tensor([3681.5083]), 'iscrowd': ten
+sor([0]), 'orig_size': tensor([1536, 2048])}
+Some weights of DetrForObjectDetection were not initialized from the model checkpoint at facebook/detr-resnet-50 and are newly initialized because the shapes did not match:
+- class_labels_classifier.weight: found shape torch.Size([92, 256]) in the checkpoint and torch.Size([2, 256]) in the model instantiated
+- class_labels_classifier.bias: found shape torch.Size([92]) in the checkpoint and torch.Size([2]) in the model instantiated
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+2023-03-23 16:43:12,195 - pytorch_lightning.utilities.rank_zero - INFO - GPU available: True (cuda), used: True
+2023-03-23 16:43:12,195 - pytorch_lightning.utilities.rank_zero - INFO - TPU available: False, using: 0 TPU cores
+2023-03-23 16:43:12,195 - pytorch_lightning.utilities.rank_zero - INFO - IPU available: False, using: 0 IPUs
+2023-03-23 16:43:12,195 - pytorch_lightning.utilities.rank_zero - INFO - HPU available: False, using: 0 HPUs
+2023-03-23 16:43:13,067 - pytorch_lightning.accelerators.cuda - INFO - LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/cuda/builtin.py:27: UserWarning: torch.cuda.empty_cache() is ignored in Moreh AI Framework. This does not
+affect the program behavior in most cases. Please contact technical support for further information.
+  warnings.warn(
+2023-03-23 16:43:16,476 - pytorch_lightning.callbacks.model_summary - INFO -
+  | Name  | Type                   | Params
+-------------------------------------------------
+0 | model | DetrForObjectDetection | 41.5 M
+-------------------------------------------------
+18.0 M    Trainable params
+23.5 M    Non-trainable params
+41.5 M    Total params
+166.007   Total estimated model params size (MB)
+Sanity Checking: 0it [00:00, ?it/s]/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:430: PossibleUserWarning: The dataloader, v
+al_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine
+) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/image_processing_detr.py:886: FutureWarning: The `max_size` parameter is deprecated and will be removed in v
+4.26. Please specify in `size['longest_edge'] instead`.
+  warnings.warn(
+/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/image_processing_detr.py:970: FutureWarning: This method is deprecated and will be removed in v4.27.0. Pleas
+e use pad instead.
+  warnings.warn(
+Sanity Checking DataLoader 0:   0%|                                                                                                                            | 0/2 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "fine_tuning_test.py", line 187, in <module>
+    trainer.fit(model)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 520, in fit
+    call._call_and_handle_interrupt(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/call.py", line 44, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 559, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 935, in _run
+    results = self._run_stage()
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 976, in _run_stage
+    self._run_sanity_check()
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/trainer.py", line 1005, in _run_sanity_check
+    val_loop.run()
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/loops/utilities.py", line 174, in _decorator
+    return loop_run(self, *args, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 115, in run
+    self._evaluation_step(batch, batch_idx, dataloader_idx)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/loops/evaluation_loop.py", line 375, in _evaluation_step
+    output = call._call_strategy_hook(trainer, hook_name, *step_kwargs.values())
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/trainer/call.py", line 288, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/pytorch_lightning/strategies/strategy.py", line 378, in validation_step
+    return self.model.validation_step(*args, **kwargs)
+  File "fine_tuning_test.py", line 156, in validation_step
+    loss, loss_dict = self.common_step(batch, batch_idx)
+  File "fine_tuning_test.py", line 138, in common_step
+    outputs = self.model(pixel_values=pixel_values, pixel_mask=pixel_mask, labels=labels)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 1457, in forward
+    outputs = self.model(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 1335, in forward
+    decoder_outputs = self.decoder(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 1146, in forward
+    layer_outputs = decoder_layer(
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/transformers/models/detr/modeling_detr.py", line 761, in forward
+    hidden_states = residual + hidden_states
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 131, in wrapper
+    raise instance
+  File "/nas/huong/env/detr/lib/python3.8/site-packages/moreh/driver/pytorch/torch/wrapper/moreh_wrapper.py", line 70, in wrapper
+    return torch_function(*args, **kwargs)
+RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!
+/nas/huong/env/detr/lib/python3.8/tempfile.py:818: ResourceWarning: Implicitly cleaning up <TemporaryDirectory '/tmp/tmpdayzsth6'>
+  _warnings.warn(warn_message, ResourceWarning)
+(/nas/huong/env/detr) ubuntu@moreh-2004-vm07:/nas/huong/projects/Transformers-Tutorials/DETR$ tmux capture-pane -pS -300 > log.txt
+
