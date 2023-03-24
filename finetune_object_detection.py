@@ -18,7 +18,6 @@ train_dataloader = DataLoader(
 )
 val_dataloader = DataLoader(val_dataset, collate_fn=collate_fn, batch_size=2)
 
-
 cats = train_dataset.coco.cats
 id2label = {k: v["name"] for k, v in cats.items()}
 num_labels = len(id2label)

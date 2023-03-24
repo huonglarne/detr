@@ -14,7 +14,7 @@
 
     conda create -n detr python=3.8
 
-    update-moreh --target 23.3.0 --force torch 1.10
+    update-moreh --target 23.3.0 --force --torch 1.11
 
     pip install -r requirements.txt
 
